@@ -1,7 +1,7 @@
 <div class="container">
   <h1>Covid19 Status</h1>
   <div >
-    <form method="post" action="/courses">
+    <form method="post" action="/covid19/html">
       <table class="table table-bordered">
         <tbody>
           <tr><td>State: </td>
@@ -11,10 +11,10 @@
             <td> Data type</td>
             <td>
               <select name="dataType">
-                <option value="">Positive</option>
-                <option value="1193">Recovered</option>
-                <option value="1201">Death</option>
-                <option value="1202">Total Test Result</option>
+                <option value="Positive">Positive</option>
+                <option value="Recovered">Recovered</option>
+                <option value="Death">Death</option>
+                <option value="Total">Total Test Result</option>
               </select>
             </td>
           </tr>
@@ -23,7 +23,23 @@
       <input type="submit">
     </form>
   </div>
+
+  <div class="col-sm-6">
+    
   
+  <ol> 
+      <li>
+        <% data.forEach((item) => {%>
+          <h3 class="title">
+            State: <%= item.state || 'anyone'%>
+            <br>Data Type: <%= "Positive Cases" || "Any data" %>
+          </h3>
+      <%= item.state %> 
+      <%= item.positive %>
+      </li>
+    <%});%>
+    </ol>
+</div>
 
   <div class= "col-sm-6">
     <h1> Positive list of all states</h1>

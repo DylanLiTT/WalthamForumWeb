@@ -1,15 +1,30 @@
-<div class="row">
+<div class="col-sm-6">
+   
+    <ol> 
+    <% data.forEach((item) => {%>
+      <li>
+        <h3 class="title">
+          State: <%= item.state || 'anyone'%>
 
-    <div class="col-sm-6">
-        <% data.forEach((item) => {%>
-      <h3 class="title">
-        State: <%= item.state || 'anyone'%>
-        <br>Data Type <%= dataType  || "Any data" %>
-      </h3>
-      <ol> 
-          <li>
-          <%= item.state %> 
-          <%= item.dataType %>
-        <%});%>
-    </idv>
-  </div> 
+          <% if (value == "Positive") { %>
+            <br>Data Type: <%= "Positive cases"  || "Any data" %>
+            <%= item.state %> 
+            <%= item.positive %>
+            <%} else if (value == "Recovered"){ %>
+            <br>Data Type: <%= "Recovered cases" >
+            <%= item.state %> 
+            <%= item.death %>
+            <% } else if (value == "Death")%>
+            <br>Data Type: <%= "Recovered cases" >
+            <%= item.state %> 
+            <%= item.Recovered %>
+            <% } else if (value == "Total Test Result")%>
+            <br>Data Type: <%= "Total Test Result" >
+            <%= item.state %> 
+            <%= item.totalTestResults %>
+            <% } %>
+        </h3>
+      </li>
+    <%});%>
+  </ol>
+</div>

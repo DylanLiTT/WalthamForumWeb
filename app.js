@@ -112,7 +112,22 @@ app.get("/covid19/:method",
       next(e)
     }
   })
-
+app.post("/covid19/:method",async (req,res,next) => {
+  try {
+    let method = req.params.method
+    let result = await axios.get("https://covidtracking.com/api/v1/states/current.json");
+    //https://covidtracking.com/api/v1/states/daily.json")
+    let data = result['data'].filter(x => x.state==req.body.state)
+    if (method=="json"){
+       res.json(data)
+     } else {
+       res.render('covid19',{data:data})
+     }
+  }
+  catch(e){
+    next(e)
+  }
+});
 app.use(errorController.pageNotFoundError);
 app.use(errorController.internalServerError);
 
