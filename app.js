@@ -11,8 +11,9 @@ const User = require('./models/User');
 const axios = require("axios");
 
 const mongoose = require( 'mongoose' );
-mongoose.connect( 'mongodb://localhost/WalthamForum',
-                  {useNewUrlParserL:true});
+mongoose.connect( 
+  //'mongodb://localhost/WalthamForum',
+  process.env.MONGODB_URI,{useNewUrlParserL:true});
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
