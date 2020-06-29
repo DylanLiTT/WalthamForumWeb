@@ -11,7 +11,7 @@ const User = require('./models/User');
 const axios = require("axios");
 
 const mongoose = require( 'mongoose' );
-mongoose.connect( 
+mongoose.connect(
   //'mongodb://localhost/WalthamForum',
   process.env.MONGODB_URI,{useNewUrlParserL:true});
 const db = mongoose.connection;
@@ -39,7 +39,7 @@ const express = require("express"),
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-//app.use(cors());
+app.use(cors());
 app.use(layouts);
 
 app.use(logger('dev'));
@@ -57,7 +57,7 @@ app.use('/users', usersRouter);
 
 app.get("/houseForRent", homeController.showHouseForRent);
 app.get("/restaurant", homeController.showRestaurantOpenNow);
-app.post("/houseForRent", 
+app.post("/houseForRent",
   async(req, res, next) => {
     try{
       let name = req.body.name;
@@ -69,20 +69,32 @@ app.post("/houseForRent",
       let picUrl  = req.body.picUrl;
       let newHouseInfo = new houseInfo({
         name: name,
-        address: address, 
-        landlordPhone: landlordPhone, 
+        address: address,
+        landlordPhone: landlordPhone,
         rent: rent,
         startDate: startDate,
         endDate: endDate,
         picUrl: picUrl})
       await newHouseInfo.save();
       res.redirect("/showHouses");
-    } 
+    }
     catch(e){
       console.log("Fail to save new house data.")
     }
 })
 
+app.post("/houseForRentMobile",
+  async(req, res, next) => {
+    try{
+      let value=req.body.value;
+      let newHouseInfo = new houseInfo(value)
+      await newHouseInfo.save();
+      res.json("done");
+    }
+    catch(e){
+      console.log("Fail to save new house data.")
+    }
+})
 
 app.get("/showHouses",
    async (req,res,next) => {
@@ -95,6 +107,18 @@ app.get("/showHouses",
      }
    });
 
+   app.post("/showHousesMobile",
+      async (req,res,next) => {
+        try {
+          let houses = await houseInfo.find({})
+          console.log('returning value')
+        //  console.dir(houses)
+          res.json(houses)
+        }
+        catch(e){
+          next(e)
+        }
+      });
 
 app.get("/covid19/:method",
   async (req,res,next) => {
