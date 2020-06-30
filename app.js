@@ -6,7 +6,6 @@ const createError = require('http-errors');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
-const cors = require('cors');
 const User = require('./models/User');
 const axios = require("axios");
 
@@ -25,8 +24,8 @@ const isLoggedIn = authRouter.isLoggedIn
 const loggingRouter = require('./routes/logging');
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
-const dbRouter = require('./routes/db');
-// const toDoRouter = require('./routes/todo');
+const restaurantRounter = require('./routes/restaurants')
+const restaurantInfo = require("./models/restaurantInfo");
 
 
 const express = require("express"),
@@ -39,7 +38,6 @@ const express = require("express"),
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-//app.use(cors());
 app.use(layouts);
 
 app.use(logger('dev'));
@@ -56,7 +54,6 @@ app.use('/users', usersRouter);
 
 
 app.get("/houseForRent", homeController.showHouseForRent);
-app.get("/restaurant", homeController.showRestaurantOpenNow);
 app.post("/houseForRent", 
   async(req, res, next) => {
     try{
@@ -95,6 +92,8 @@ app.get("/showHouses",
      }
    });
 
+
+app.use("/restaurant", restaurantRounter);
 
 app.get("/covid19/:method",
   async (req,res,next) => {

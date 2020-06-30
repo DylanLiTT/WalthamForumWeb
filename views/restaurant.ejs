@@ -1,7 +1,6 @@
 <div class="col-sm nav-align"><h1 id="title">Restaurants Open Now</h1></div>
-<h1 style = "text-align: center;">Available Restaurants</h1> <br>
 
-<div>
+<!-- <div>
     <ul style = "list-style-type: none;">
       <li>
         <div class="col-sm-6">
@@ -69,4 +68,29 @@
         <div class="col-sm-6" style="text-align: center;"><img src="https://media-cdn.tripadvisor.com/media/photo-s/04/86/0e/01/exterior-by-the-parking.jpg" style="width: 250px; height: 150px; vertical-align: center;"/></div>
       </li>
     </ul>
+</div> -->
+
+<div>
+  
+  <p> Here is your list of things to do! </p>
+
+    <% items.forEach(item => { %>
+         <a href="/todo/remove/<%=item._id %>">X</a>
+         ::
+         <%= item.item %>
+        <br>
+    <% }) %>
+
+    <form method="post" action="todo">
+        new item: <input type="text" name="item"><br>
+        <input type="submit" value="store">
+    </form>
+
+</div>
+
+<div style="text-align: center;">
+  <p>Enter Your Zipcode To See Openning Restaurants Near You</p>
+  <form action="/restaurant" method="post">
+    <label for="zipCode">Zip Code</label>
+    <input type="text" zipCode="zipCode" value="">
 </div>
