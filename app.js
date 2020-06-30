@@ -80,6 +80,19 @@ app.post("/houseForRent",
     }
 })
 
+app.post("/houseForRentMobile",
+  async(req, res, next) => {
+    try{
+      let value=req.body.value;
+      let newHouseInfo = new houseInfo(value)
+      await newHouseInfo.save();
+      res.json("done");
+    }
+    catch(e){
+      console.log("Fail to save new house data.")
+    }
+})
+
 
 app.get("/showHouses",
    async (req,res,next) => {
@@ -91,6 +104,19 @@ app.get("/showHouses",
        next(e)
      }
    });
+
+app.post("/showHousesMobile",
+  async (req,res,next) => {
+    try {
+      let houses = await houseInfo.find({})
+      console.log('returning value')
+     //  console.dir(houses)
+      res.json(houses)
+    }
+    catch(e){
+      next(e)
+    }
+  });
 
 
 app.use("/restaurant", restaurantRounter);
