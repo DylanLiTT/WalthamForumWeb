@@ -1,7 +1,7 @@
 <h1 style = "text-align: center;">Available Housing</h1> <br>
 
 <div class = "container">
-    <ul>
+    <ul style="list-style-type: none;">
     <% houses.forEach(house => { %>
         <li>
             <div class="col-sm-6">
@@ -19,6 +19,10 @@
             <div class="col-sm-6" style="text-align: center;">
                 <img src= "<%= house.picUrl %>" style="width: 300px; height: 180px; vertical-align: center;"/>
             </div>
+            <a href="/showHouses/remove/<%=house._id %>" style="align-self: center;">
+				<span class="button">Remove</span>
+            </a>
+            <br><br><br>
         </li>
     <% }) %>
     </ul>

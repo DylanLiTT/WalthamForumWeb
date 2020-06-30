@@ -6,11 +6,12 @@ const createError = require('http-errors');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+const cors = require('cors');
 const User = require('./models/User');
 const axios = require("axios");
 
 const mongoose = require( 'mongoose' );
-mongoose.connect( 
+mongoose.connect(
   //'mongodb://localhost/WalthamForum',
   process.env.MONGODB_URI,{useNewUrlParserL:true});
 const db = mongoose.connection;
@@ -24,8 +25,8 @@ const isLoggedIn = authRouter.isLoggedIn
 const loggingRouter = require('./routes/logging');
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
-const restaurantRounter = require('./routes/restaurants')
-const restaurantInfo = require("./models/restaurantInfo");
+const dbRouter = require('./routes/db');
+// const toDoRouter = require('./routes/todo');
 
 
 const express = require("express"),
@@ -38,6 +39,7 @@ const express = require("express"),
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+app.use(cors());
 app.use(layouts);
 
 app.use(logger('dev'));
@@ -54,7 +56,8 @@ app.use('/users', usersRouter);
 
 
 app.get("/houseForRent", homeController.showHouseForRent);
-app.post("/houseForRent", 
+app.get("/restaurant", homeController.showRestaurantOpenNow);
+app.post("/houseForRent",
   async(req, res, next) => {
     try{
       let name = req.body.name;
@@ -66,15 +69,15 @@ app.post("/houseForRent",
       let picUrl  = req.body.picUrl;
       let newHouseInfo = new houseInfo({
         name: name,
-        address: address, 
-        landlordPhone: landlordPhone, 
+        address: address,
+        landlordPhone: landlordPhone,
         rent: rent,
         startDate: startDate,
         endDate: endDate,
         picUrl: picUrl})
       await newHouseInfo.save();
       res.redirect("/showHouses");
-    } 
+    }
     catch(e){
       console.log("Fail to save new house data.")
     }
@@ -93,7 +96,6 @@ app.post("/houseForRentMobile",
     }
 })
 
-
 app.get("/showHouses",
    async (req,res,next) => {
      try {
@@ -105,21 +107,31 @@ app.get("/showHouses",
      }
    });
 
-app.post("/showHousesMobile",
-  async (req,res,next) => {
+app.get('/remove/:houseId',
+   isLoggedIn,
+   async (req,res,next) => {
     try {
-      let houses = await houseInfo.find({})
-      console.log('returning value')
-     //  console.dir(houses)
-      res.json(houses)
+      await houseInfo.deleteOne({_id:req.params.houseId});
+      res.redirect('/showHouses')
     }
     catch(e){
       next(e)
     }
-  });
+  }
+);
 
-
-app.use("/restaurant", restaurantRounter);
+app.post("/showHousesMobile",
+   async (req,res,next) => {
+     try {
+       let houses = await houseInfo.find({})
+       console.log('returning value')
+     //  console.dir(houses)
+       res.json(houses)
+     }
+     catch(e){
+       next(e)
+     }
+   });
 
 app.get("/covid19/:method",
   async (req,res,next) => {
