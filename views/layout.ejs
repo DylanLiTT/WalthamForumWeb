@@ -7,7 +7,8 @@
 	<title>Waltham Forum</title>
 	<link rel="shortcut icon" type="image/png" href="/images/icon.png" />
 	<link rel="stylesheet" href="/css/bootstrap.css">
-	<link rel="stylesheet" href="/css/confetti_cuisine.css">
+	<link rel="stylesheet" href="/css/generalStyle.css">
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
 
 <body>
@@ -17,26 +18,26 @@
 		</div>
 		<div class="col-sm nav-align">
 			<a href="/">
-				<span class="button">Home</span>
+				<span class="w3-button w3-white w3-round-xxlarge">Home</span>
 			</a>
 			<a href="/houseForRent">
-				<span class="button">House For Rent</span>
+				<span class="w3-button w3-white w3-round-xxlarge">House For Rent</span>
 			</a>
 			<a href="/restaurant">
-				<span class="button">Restaurant Open Now</span>
+				<span class="w3-button w3-white w3-round-xxlarge">Restaurant Open Now</span>
 			</a>
 			<a href="/covid19/html">
-				<span class="button">Covid-19 Latest Updates</span>
+				<span class="w3-button w3-white w3-round-xxlarge">Covid-19 Latest Updates</span>
 			</a>
 
 			<% if (!loggedIn) {%>
 				<a href="/auth/google">
-					<span class="button">Login</span>
+					<span class="w3-button w3-white w3-round-xxlarge">Login</span>
 				</a>
 				<% } else  { %>
 					<%= user.googleemail %>
 				<a href="/logout">
-					<span class="button">Logout</span>
+					<span class="w3-button w3-white w3-round-xxlarge">Logout</span>
 				</a>
 				<% } %>
 		</div>
