@@ -35,10 +35,10 @@
 					<span class="w3-button w3-white w3-round-xxlarge">Login</span>
 				</a>
 				<% } else  { %>
-					<%= user.googleemail %>
 				<a href="/logout">
 					<span class="w3-button w3-white w3-round-xxlarge">Logout</span>
 				</a>
+				<div id="account"><%= user.googleemail %></div>
 				<% } %>
 		</div>
 	</div>

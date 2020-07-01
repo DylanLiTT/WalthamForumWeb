@@ -3,12 +3,16 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema;
 
 const houseScheme = Schema( {
-    name: String,
     address: String,
+    name: String,
     landlordPhone: String,
-    rent: Number,
+    email: String,
+    bedroom: String.
+    bathroom: String,
+    rent: String,
     startDate: String,
     endDate: String,
+    comment: String,
     picUrl: String
 })
 

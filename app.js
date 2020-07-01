@@ -60,20 +60,28 @@ app.get("/restaurant", homeController.showRestaurantOpenNow);
 app.post("/houseForRent",
   async(req, res, next) => {
     try{
-      let name = req.body.name;
       let address = req.body.address;
+      let name = req.body.name;
       let landlordPhone = req.body.landlordPhone;
+      let email = req.body.email;
+      let bedroom = req.body.bedroom;
+      let bathroom = req.body.bathroom;
       let rent = req.body.rent;
       let startDate  = req.body.startDate;
       let endDate = req.body.endDate;
+      let comment = req.body.comment;
       let picUrl  = req.body.picUrl;
       let newHouseInfo = new houseInfo({
-        name: name,
         address: address,
+        name: name,
         landlordPhone: landlordPhone,
+        email: email,
+        bedroom: bedroom,
+        bathroom: bathroom,
         rent: rent,
         startDate: startDate,
         endDate: endDate,
+        comment: comment,
         picUrl: picUrl})
       await newHouseInfo.save();
       res.redirect("/showHouses");

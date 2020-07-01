@@ -25,16 +25,16 @@
   </div>
 
   <div class="col-sm-6">
-    
-  
-  <ol> 
+
+
+  <ol>
       <li>
         <% data.forEach((item) => {%>
           <h3 class="title">
             State: <%= item.state || 'anyone'%>
             <br>Data Type: <%= "Positive Cases" || "Any data" %>
           </h3>
-      <%= item.state %> 
+      <%= item.state %>
       <%= item.positive %>
       </li>
     <%});%>

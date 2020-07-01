@@ -6,15 +6,19 @@
         <li>
             <div class="col-sm-6">
                 <p style="text-align: center; font-size: x-large;">
-                  <%= house.name %>
+                  <%= house.address %><br>
                 </p>
                 <p style="text-align: center; font-size: large;">
-                    <%= house.address %><br>
+                    <%= house.name %><br>
+                    <%= house.landlordPhone %><br>
+                    <%= house.email %><br>
+                    <%= house.bedroom %><br>
+                    <%= house.bathroom %><br>
+                    <%= house.rent %><br>
                     <%= house.startDate %><br>
                     <%= house.endDate %><br>
-                    <%= house.landlordPhone %><br>
-                    $ <%= house.rent%><br>
-                  </p>
+                    <%= house.comment%><br>
+                </p>
             </div>
             <div class="col-sm-6" style="text-align: center;">
                 <img src= "<%= house.picUrl %>" style="width: 300px; height: 180px; vertical-align: center;"/>
