@@ -14,7 +14,7 @@
                 <option value="Positive">Positive</option>
                 <option value="Recovered">Recovered</option>
                 <option value="Death">Death</option>
-                <option value="Total">Total Test Result</option>
+                <option value="Total Test Result">Total Test Result</option>
               </select>
             </td>
           </tr>
@@ -25,24 +25,24 @@
   </div>
 
   <div class="col-sm-6">
-  <ol>
-      <li>
-        <% data.forEach((item) => {%>
-          <h3 class="title">
-            State: <%= item.state || 'anyone'%>
-            <br>Data Type: <%= dataType %>
-          </h3>
-          <%= item.state %>
-          <% if (dataType == "Positive") {%>
-          <%= item.positive %>
-          <% } else if (dataType == "Recovered") {%>
-          <%= item.recovered %>
-          <% } else if (dataType == "Death") {%>
-          <%= item.death %>
-          <% } if (dataType == "Total Test Result") {%>
-          <%= item.totalTestResults %>
-          <% } %>
-      </li>
+    <ol>
+      <% data.forEach((item) => {%>
+        <li>
+        <h3 class="title">
+          State: <%= item.state || 'anyone'%>
+          <br>Data Type: <%= dataType %>
+        </h3>
+        <%= item.state %>
+        <% if (dataType == "Positive") {%>
+        <%= item.positive %>
+        <% } else if (dataType == "Recovered") {%>
+        <%= item.recovered %>
+        <% } else if (dataType == "Death") {%>
+        <%= item.death %>
+        <% } if (dataType == "Total Test Result") {%>
+        <%= item.totalTestResults %>
+        <% } %>
+        </li>
     <%});%>
     </ol>
 </div>
