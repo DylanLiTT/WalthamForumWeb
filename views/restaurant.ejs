@@ -1,11 +1,11 @@
 <div class="col-sm nav-align"><h1>Restaurants Open Now</h1></div>
 
-<!-- <div>
+<div>
     <ul style = "list-style-type: none;">
       <li>
         <div class="col-sm-6">
           <p style="text-align: center; font-size: medium;">
-            <a href="https://mulantaiwanwaltham.com/">Mulan Taiwanese restaurant</a> <br>
+            <a href="https://mulantaiwanwaltham.com/" class="address">Mulan Taiwanese restaurant</a> <br>
             835 Main Street<br>‎
             Mon. - Thu. & Sun.<br>
             11 am - 9:30 pm<br>
@@ -21,7 +21,7 @@
       <li>
         <div class="col-sm-6">
           <p style="text-align: center; font-size: medium;">
-            <a href="https://bonchon.com/korean-fried-chicken-waltham-moody-st-ma/">Bonchon Waltham</a><br>
+            <a href="https://bonchon.com/korean-fried-chicken-waltham-moody-st-ma/" class="address">Bonchon Waltham</a><br>
             329 Moody St<br>
             Mon. - Thu. & Sun.<br>
             11:30 am - 10 pm<br>
@@ -37,7 +37,7 @@
       <li>
         <div class="col-sm-6">
           <p style="text-align: center; font-size: medium;">
-            <a href="https://www.pho1walthamma.com/">
+            <a href="https://www.pho1walthamma.com/" class="address">
               Pho 1 Waltham
             </a>
               <br>
@@ -46,8 +46,6 @@
               11:30 am - 10 pm<br>
               Fri. & Sat<br>
               11:30 am - 11 pm<br>
-              Sun<br>
-              12 pm - 10pm<br>
           </p>
         </div>
         <div class="col-sm-6" style="text-align: center;"><img src="https://cdn.usarestaurants.info/assets/uploads/57e5764f29542c7fca477dce9fbea914_-united-states-massachusetts-middlesex-county-waltham-pho-1-waltham-781-891-6977htm.jpg" style="width: 250px; height: 150px; vertical-align: center;"/></div>
@@ -58,35 +56,18 @@
       <li>
         <div class="col-sm-6">
           <p style="text-align: center; font-size: medium;">
-            <a href="https://www.liveatthemerc.com/">
+            <a href="https://www.liveatthemerc.com/" class="address">
               Joseph Two</a>
               <br>
               805 Main Street<br>
               Temporalily Closed<br>
           </p>
         </div>
-        <div class="col-sm-6" style="text-align: center;"><img src="https://media-cdn.tripadvisor.com/media/photo-s/04/86/0e/01/exterior-by-the-parking.jpg" style="width: 250px; height: 150px; vertical-align: center;"/></div>
+        <div class="col-sm-6" style="text-align: center;"><img src="https://s3-media0.fl.yelpcdn.com/bphoto/VuSCIW09guvVjwDNKReFHQ/o.jpg" style="width: 250px; height: 150px; vertical-align: center;"/></div>
       </li>
     </ul>
-</div> -->
-
-<div>
-
-  <p> Here is your list of things to do! </p>
-
-    <% items.forEach(item => { %>
-         <a href="/todo/remove/<%=item._id %>">X</a>
-         ::
-         <%= item.item %>
-        <br>
-    <% }) %>
-
-    <form method="post" action="todo">
-        new item: <input type="text" name="item"><br>
-        <input type="submit" value="store">
-    </form>
-
 </div>
+
 
 <div style="text-align: center;">
   <p>Enter Your Zipcode To See Openning Restaurants Near You</p>

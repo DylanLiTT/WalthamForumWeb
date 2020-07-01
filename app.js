@@ -115,16 +115,11 @@ app.get("/showHouses",
      }
    });
 
-app.get('/remove/:houseId',
+app.get('/showHouses/remove/:houseId',
    isLoggedIn,
    async (req,res,next) => {
-    try {
-      await houseInfo.deleteOne({_id:req.params.houseId});
+    await houseInfo.deleteOne({_id:req.params.houseId});
       res.redirect('/showHouses')
-    }
-    catch(e){
-      next(e)
-    }
   }
 );
 
