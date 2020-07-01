@@ -30,10 +30,18 @@
         <% data.forEach((item) => {%>
           <h3 class="title">
             State: <%= item.state || 'anyone'%>
-            <br>Data Type: <%= "Positive Cases" || "Any data" %>
+            <br>Data Type: <%= dataType %>
           </h3>
-      <%= item.state %>
-      <%= item.positive %>
+          <%= item.state %>
+          <% if (dataType == "Positive") {%>
+          <%= item.positive %>
+          <% } else if (dataType == "Recovered") {%>
+          <%= item.recovered %>
+          <% } else if (dataType == "Death") {%>
+          <%= item.death %>
+          <% } if (dataType == "Total Test Result") {%>
+          <%= item.totalTestResults %>
+          <% } %>
       </li>
     <%});%>
     </ol>

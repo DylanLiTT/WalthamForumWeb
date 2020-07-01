@@ -147,12 +147,13 @@ app.get("/covid19/:method",
       let method = req.params.method
       let result = await axios.get("https://covidtracking.com/api/v1/states/current.json");
       //https://covidtracking.com/api/v1/states/daily.json")
+      let dataType="Positive"
       let list =result['data']
       let data = result['data']
       if (method=="json"){
          res.json(data)
        } else {
-         res.render('covid19',{data:data,list:list})
+         res.render('covid19',{data:data,list:list,dataType:dataType})
        }
     }
     catch(e){
@@ -166,10 +167,12 @@ app.post("/covid19/:method",async (req,res,next) => {
     //https://covidtracking.com/api/v1/states/daily.json")
     let list=result['data']
     let data = result['data'].filter(x => x.state==req.body.state)
+    let dataType=req.body.dataType
+
     if (method=="json"){
        res.json(data)
      } else {
-       res.render('covid19',{data:data,list:list})
+       res.render('covid19',{data:data,list:list,dataType:dataType})
      }
   }
   catch(e){
