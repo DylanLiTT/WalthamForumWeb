@@ -25,8 +25,6 @@
   </div>
 
   <div class="col-sm-6">
-
-
   <ol>
       <li>
         <% data.forEach((item) => {%>
@@ -43,7 +41,7 @@
 
   <div class= "col-sm-6">
     <h1> Positive list of all states</h1>
-        <% data.forEach((item) => {%>
+        <% list.forEach((item) => {%>
           <hr>
           <%= item.state %> <%= item.positive %>
         <%});%>
