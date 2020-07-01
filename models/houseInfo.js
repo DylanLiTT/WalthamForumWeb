@@ -7,7 +7,7 @@ const houseScheme = Schema( {
     name: String,
     landlordPhone: String,
     email: String,
-    bedroom: String.
+    bedroom: String,
     bathroom: String,
     rent: String,
     startDate: String,
