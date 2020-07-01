@@ -108,11 +108,13 @@ app.post("/deleteMobile",
   async(req, res, next) => {
     try{
       let value=req.body.value;
-      await newHouseInfo.deleteOne({ "_id" : value } );
+      await houseInfo.deleteOne({ "_id" : value } );
       res.json("done");
     }
     catch(e){
-      console.log("Fail to save new house data.")
+      console.log("Fail to delete.")
+
+      console.log(value)
     }
 })
 
