@@ -66,3 +66,18 @@ p {
   margin-right: 10px;
   margin-top: -30px;
 }
+
+.button {
+  background-color: #ed4a0f;
+  padding: 0.3vw 3vw;
+  border-radius: 2px;
+  cursor: pointer;
+  display: inline-block;
+  color: #fff;
+}
+
+.address {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-weight: bold;
+  
+}

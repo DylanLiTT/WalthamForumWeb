@@ -5,7 +5,7 @@
     <% houses.forEach(house => { %>
         <li>
             <div class="col-sm-6">
-                <p style="text-align: center; font-size: medium;">
+                <p class="address" style="text-align: center; font-size: large;">
                   <%= house.address %><br>
                 </p>
                 <p style="text-align: center; font-size: medium;">
@@ -14,18 +14,21 @@
                    email:  <%= house.email %><br>
                    house: <%= house.bedroom %><br>
                    bathroom:  <%= house.bathroom %><br>
-                   rent:  <%= house.rent %><br>
+                   rent:  $<%= house.rent %><br>
                    startDate:  <%= house.startDate %><br>
                    endDate:  <%= house.endDate %><br>
                    comment: <%= house.comment%><br>
                 </p>
             </div>
             <div class="col-sm-6" style="text-align: center;">
-                <img src= "<%= house.picUrl %>" style="width: 300px; height: 220px; vertical-align: center;"/>
+                <img src= "<%= house.picUrl %>" style="width: 400px; height: 250px; vertical-align: center;"/>
             </div>
-            <a href="/showHouses/remove/<%=house._id %>" style="align-self: center;">
-				<span class="button">Remove</span>
-            </a>
+            <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+            <div style="text-align: center;">
+                <a href="/showHouses/remove/<%=house._id %>" >
+                    <span class="button">Remove</span>
+                </a>
+            </div>
             <br><br><br>
         </li>
     <% }) %>
