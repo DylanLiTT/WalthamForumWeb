@@ -104,6 +104,18 @@ app.post("/houseForRentMobile",
     }
 })
 
+app.post("/deleteHouseForRentMobile",
+  async(req, res, next) => {
+    try{
+      let value=req.body.value;
+      await newHouseInfo.deleteOne({_id:value});
+      res.json("done");
+    }
+    catch(e){
+      console.log("Fail to save new house data.")
+    }
+})
+
 app.get("/showHouses",
    async (req,res,next) => {
      try {
