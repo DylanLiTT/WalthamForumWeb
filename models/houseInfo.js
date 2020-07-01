@@ -5,11 +5,11 @@ const Schema = mongoose.Schema;
 const houseScheme = Schema( {
     address: String,
     name: String,
-    landlordPhone: String,
+    phone: String,
     email: String,
     bedroom: String,
     bathroom: String,
-    rent: String,
+    price: String,
     startDate: String,
     endDate: String,
     comment: String,

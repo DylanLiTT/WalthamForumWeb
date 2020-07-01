@@ -62,11 +62,11 @@ app.post("/houseForRent",
     try{
       let address = req.body.address;
       let name = req.body.name;
-      let landlordPhone = req.body.landlordPhone;
+      let phone = req.body.phone;
       let email = req.body.email;
       let bedroom = req.body.bedroom;
       let bathroom = req.body.bathroom;
-      let rent = req.body.rent;
+      let price = req.body.price;
       let startDate  = req.body.startDate;
       let endDate = req.body.endDate;
       let comment = req.body.comment;
@@ -74,11 +74,11 @@ app.post("/houseForRent",
       let newHouseInfo = new houseInfo({
         address: address,
         name: name,
-        landlordPhone: landlordPhone,
+        phone: phone,
         email: email,
         bedroom: bedroom,
         bathroom: bathroom,
-        rent: rent,
+        price: price,
         startDate: startDate,
         endDate: endDate,
         comment: comment,
